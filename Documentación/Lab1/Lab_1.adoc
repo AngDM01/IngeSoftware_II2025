@@ -1,0 +1,60 @@
+= Documento Laboratorio 1
+
+Angel Mena Coudin  |  C34789
+
+== Enlace del repositorio
+
+link:https://github.com/AngDM01/IngeSoftware_II2025#[Enlace] para acceder al repositorio.
+
+== Git Rebase and Merge
+
+Los comandos de git Rebase y merge son dos formas de integrar cambios de una rama a otra.
+Rebase reaplica los cambios que se hicieron en una rama y los añade a otra dando la impresión de que tales cambios fueron realizados en esa rama, dejando de paso un historial lineal sin unificaciones por cambios. Merge por otro lado, unifica dos ramas creando un commit de unificación que permite mantener el historial completo de ambas ramas, y visualmente sí denota la unificación de cambios.
+
+Según lo entendido, estos dos comandos se pueden utilizar juntos cuando alguna o ambas de las dos ramas implementan varios commits de otras ramas, por lo que quiero hacer un rebase para  mantener el historial limpio y lineal, para posteriormente hacer un merge de las dos ramas.
+
+== Git Squash and Merge
+
+Squash permite combinar múltiples commits en uno solo. Útil para mantener un historial más limpio y con menos commits intermedios.
+
+De esta forma, se puede realizar una unificación a una rama principal, pero con un solo commit que represente todos los cambios realizados en la otra rama.
+
+****
+git merge --squash <rama_que_quiero_mergear_a_la_actual>
+****
+
+== Git Reset
+
+Herramienta para deshacer cambios. Altera y modifica el historial de commits. Se especifica el commit al que se quiere volver y elimina todos los commits posteriores a este. Se utiliza con tres modos, ambas eliminan los commits, pero difieren en cómo tratar los cambios producidos:
+
+****
+git reset [--soft | --mixed | --hard] <commit>
+****
+
+* --soft: Los cambios que han sido posteriores al commit especificado se mantienen en el área de staging (con git add) y el area de working.
+
+* --mixed (por defecto): Elimina los cambios del repositorio de git y del area de staging, se quedan en el area de working (carpeta del proyecto).
+
+* --hard: Elimina los cambios del repositorio en git, del área de staging y del área de working. Los cambios se pierden.
+
+== Git Revert
+
+Revert también es utilizado para deshacer commits, creando un nuevo commit que revierte los cambios del commit especificado.
+
+****
+git revert <commit>
+****
+
+== Diferencia entre Reset y Revert
+
+Reset elimina los commits anteriores al actual del historial, no queda información o cambios registrados, solo puede volver hacía atrás desde el commit actual, por lo que si se quiere eliminar un commit pasado, se tendría que eliminar todos los commits posteriores al que se quiere eliminar.
+
+Revert crea un nuevo commit revirtiendo los cambios del commit especificado, sin eliminar el commit especificado. Útil para mentener el historial completo e inspeccionar los cambios deshechos en caso de necesitarlo. Además, Revert puede deshacer cualquier commit en el historial, sin importar si tiene commits posteriores o no.
+
+== Referencias:
+
+* https://www.atlassian.com/es/git/tutorials/learn-git-with-bitbucket-cloud
+
+* https://www.geeksforgeeks.org/git/git-squash/
+
+* https://www.youtube.com/watch?v=Iu1WgGafKGc
